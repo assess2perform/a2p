@@ -1,0 +1,75 @@
+// In `app/sass/main.scss`
+
+// Fonts
+@import "fonts";
+@include font-face("gotham-thin", "../fonts/Gotham-Thin");
+@include font-face("gotham-light", "../fonts/Gotham-Light");
+@include font-face("gotham-bold", "../fonts/Gotham-Bold");
+
+// Font variables
+$font-thin: "gotham-thin", sans-serif;
+$font-light: "gotham-light", sans-serif;
+$font-bold: "gotham-bold", sans-serif;
+
+// Color variables
+$primary-color: #111;
+$secondary-color: #666;
+$link-color: #0b70b7;
+
+
+
+body {
+    margin: 60px 0 100px;
+    font-family: $font-light;
+    font-size: 16px;
+    color: $primary-color;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $font-thin;
+    font-weight: normal;
+}
+
+a {
+    color: $link-color;
+}
+
+.hero-text {
+    h1 {
+        margin: 1.25em 0 .5em;
+        font-size: 4.5em;
+        line-height: 1em;
+        letter-spacing: -3px;
+    }
+    p {
+        font-size: 26px;
+        line-height: 45px;
+        color: $secondary-color;
+        letter-spacing: -1px;
+    }
+    text-align: center;
+}
+
+.hero-app {
+    position: relative;
+    top: 5em;
+    background: url(../images/texture.svg) 0 0 repeat;
+    margin-bottom: 5em;
+}
+
+.hero-image {
+    position: relative;
+    top: -5em;
+}
+
+.nav {
+    font-family: $font-bold;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+    
+
+}

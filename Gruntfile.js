@@ -48,8 +48,10 @@ module.exports = function (grunt) {
                 files: ['Gruntfile.js']
             },
             styles: {
-                files: ['<%= config.app %>/styles/{,*/}*.css'],
-                tasks: ['newer:copy:styles', 'autoprefixer']
+                // files: ['<%= config.app %>/styles/{,*/}*.css'],
+                // tasks: ['newer:copy:styles', 'autoprefixer'],
+                files: ['<%= config.app %>/sass/{,*/}*.scss'],
+                tasks: ['sass', 'newer:copy:styles', 'autoprefixer']
             },
             livereload: {
                 options: {
@@ -316,7 +318,26 @@ module.exports = function (grunt) {
                 'imagemin',
                 'svgmin'
             ]
+        },
+
+        sass: {
+            server: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.app %>/sass',
+                    src: ['*.scss'],
+                    dest: '.tmp/styles',
+                    ext: '.css'
+                }],
+                options: {
+                    loadPath: [
+                        'bower_components/bourbon/app/assets/stylesheets',
+                        'bower_components/neat/app/assets/stylesheets'
+                    ]
+                }
+            }
         }
+
     });
 
 
@@ -328,6 +349,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'concurrent:server',
+            'sass',
             'autoprefixer',
             'connect:livereload',
             'watch'
@@ -357,6 +379,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'useminPrepare',
+        'sass',
         'concurrent:dist',
         'autoprefixer',
         'concat',
