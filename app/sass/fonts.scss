@@ -2,11 +2,11 @@
 @mixin font-face($family, $src, $weight: normal, $style: normal) {
     @font-face {
         font-family: $family;
-        src: url('#{$src}.eot');
-        src: url('#{$src}.eot?#iefix') format('embedded-opentype'),
-            url('#{$src}.woff') format('woff'),
-            url('#{$src}.ttf') format('truetype'),
-            url('#{$src}.svg##{$family}') format('svg');
+        src: url(#{$src}.eot); /* IE9 Compat Modes */
+        src: url(#{$src}.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
+            url(#{$src}.woff) format('woff'), /* Modern Browsers */
+            url(#{$src}.ttf) format('truetype'), /* Safari, Android, iOS */
+            url(#{$src}.svg##{$family}) format('svg'); /* Legacy iOS */
         font-style: $style;
         font-weight: $weight;
     }
